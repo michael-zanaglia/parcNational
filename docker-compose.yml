@@ -1,0 +1,56 @@
+services :
+
+# React -----------------------
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontParc
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  
+# Php -----------------------
+  
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backParc
+    volumes:
+      - ./backend:/var/www/html
+    ports:
+      - "8080:80" #ports arbitraires
+
+# mySql ---------------------
+
+  mysql:
+    image: mysql:8.0.39
+    restart: always
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mercantour
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password 
+    volumes :
+      - mysql_data:/var/lib/mysql
+
+
+# phpMyAdmin -----------------
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    environment :
+      PMA_HOSTS: mysql-db #je l'associs à mon sql
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "8081:80"
+
+volumes :
+  mysql_data:
