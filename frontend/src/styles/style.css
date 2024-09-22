@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.widthSize96{
+    width: 96px;
+}
+.widthSize32{
+    width: 32px;
+    height: auto;
+}
+/* ----------------------- HEADER ----------------------- */
+header {
+    background-color: var(--mainTheme);
+    height: auto;
+}
+nav ul {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+ul div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav ul div a {
+    text-decoration: none;
+}
+.logo{
+    padding-top: 5px;
+}
+.liBox {
+    min-width: 100px;
+    height: 100%;
+    padding: 10px;
+    position: relative;
+    transition: all 0.2s ease-out;
+}
+.admin, .user {
+    transition: transform 0.6s ease-in-out;
+    perspective: 1000px;
+}
+.liBox:hover .admin {
+    transform: rotate(360deg);
+}
+.user:hover {
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+}
+.liBox:hover, .subLiBox:hover {
+    background-color: var(--hoverTheme);
+}
+li {
+    list-style: none;
+    color: var(--colorTheme);
+    font-size: 1.5em;
+    width: auto;
+}
+.tapis {
+    cursor: pointer;
+}
+.subNavBar {
+    background-color: var(--mainTheme);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top : 100%;
+    width: 100%;
+    height: 150px;
+}
+.subLiBox {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    transition: all 0.2s ease-out;
+}
+
+.moduleConn {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 15px;
+    margin-top: 5px;
+    background-color: var(--mainTheme);
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+.show {
+    transform: translateY(0%);
+    opacity: 1;
+    visibility: visible;
+}
+.hide {
+    visibility: hidden;
+    transform: translateY(5%);
+    opacity: 0;
+}
+.moduleConn .close {
+    align-self: end;
+    cursor: pointer;
+}
+.moduleConn, .moduleConn form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.moduleConn form label {
+    color : var(--colorTheme);
+}
+.moduleConn form .pwdInp{
+    padding-right: 35px;
+}
+.moduleConn form input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #F7F5F5;
+    background-color: #292929;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    height: 25px;
+    padding-left: 10px;
+}
+.moduleConn form input:focus{
+    background-color: #0f0f0f;
+}
+
+.viewPwd {
+    position: absolute;
+    right: 21px;
+    top: 54%;
+}
+
+.moduleConn form button {
+    margin-top: 5px;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #F7F5F5;
+    height: 40px;
+    border-radius: 5px;
+}
+.conn {
+    background-color: #1382EA;
+    cursor: pointer;
+}
+.conn:hover {
+    background-color: #1176d4;
+}
+
+.redirectSignIn {
+    font-size: 0.8em;
+    text-decoration-line: underline;
+    align-self: end;
+    margin-top: 3px;
+}
+
+@media (max-width : 781px) {
+    header {
+        position: relative;
+    }
+    .mainBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    nav ul svg{
+        position: absolute;
+        left: 0;
+        margin-left: 2%;
+        cursor: pointer;
+    }
+    .subBar {
+        display: flex;
+        flex-direction: column;
+        transition: height 0.3s ease-in;
+        background-color: var(--mainTheme);
+        height: 0vh;
+        overflow: hidden;
+    }
+    .showMobile {
+        height: 100vh;
+    }
+    .subBar div {
+        /*margin-bottom: 5px;*/
+        text-align: center;
+    }
+
+    .subBar div a{
+        text-decoration: none;
+    }
+    .subLiBox:hover a li{
+        color: rgb(240, 181, 71);
+    }
+    .moduleConn{
+        left:10%;
+        bottom: 0;
+        top: auto;
+        right: auto;
+        z-index: 2;
+        width: 80vw;
+        
+    }
+    .overlay {
+        background-color: #0f0f0f;
+        opacity: 0.5;
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
+/* ----------------------- FOOTER ----------------------- */
+
+footer {
+    background-color: #292929;
+    height: 159px;
+}
