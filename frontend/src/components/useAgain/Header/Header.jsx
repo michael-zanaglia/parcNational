@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import ModalConn from "./modalConn/modalConn";
 
-export default function Header({ theme, color, hoverTheme }){
+export default function Header({ theme, color, hoverTheme, setBlocked }){
     const isHeightScreen  = useMediaQuery({query: '(min-width : 781px)'});
 
     const [isHovered, setIsHovered] = useState(false);
@@ -20,6 +20,7 @@ export default function Header({ theme, color, hoverTheme }){
     }
     function clickMobileElement(){
         setIsClickedMob(!isClickedMob);
+        setBlocked(!isClickedMob);
     }
 
     document.documentElement.style.setProperty("--mainTheme", theme);

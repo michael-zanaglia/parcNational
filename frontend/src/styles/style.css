@@ -213,6 +213,7 @@ li {
 footer {
     background-color: #292929;
     height: 159px;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -236,4 +237,11 @@ footer {
 
 .footerItems div{
     cursor: pointer;
+}
+
+@media(max-width : 376px){
+    footer{
+        display: flex;
+        flex-direction: column;
+    } 
 }

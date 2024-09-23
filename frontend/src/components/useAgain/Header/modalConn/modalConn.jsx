@@ -30,7 +30,7 @@ export default function ModalConn({ isClicked, stateChange, color }){
                 <label htmlFor="password">Mot de passe</label>
                 <input className="pwdInp" type={inpType ? "password" : "text"} required/>   
                 <svg onClick={changeInpPwdToText} className="viewPwd" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="24px" height="24px">
-                    <path fill="#f7f5f5" fill-rule="evenodd" d={pathD} clip-rule="evenodd"/>
+                    <path fill="#f7f5f5" fillRule="evenodd" d={pathD} clipRule="evenodd"/>
                 </svg>
                 <button className="conn">Se connecter</button>
             </form>
