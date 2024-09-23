@@ -24,7 +24,7 @@ ul div {
     justify-content: space-around;
     align-items: center;
 }
-nav ul div a {
+a {
     text-decoration: none;
 }
 .logo{
@@ -185,10 +185,6 @@ li {
         /*margin-bottom: 5px;*/
         text-align: center;
     }
-
-    .subBar div a{
-        text-decoration: none;
-    }
     .subLiBox:hover a li{
         color: rgb(240, 181, 71);
     }
@@ -217,4 +213,27 @@ li {
 footer {
     background-color: #292929;
     height: 159px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footerItems a{
+    color: #F7F5F5;
+}
+
+.footerItems {
+    display: flex;
+    gap: 5px;
+}
+.contactFooter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F7F5F5;
+}
+
+.footerItems div{
+    cursor: pointer;
 }
