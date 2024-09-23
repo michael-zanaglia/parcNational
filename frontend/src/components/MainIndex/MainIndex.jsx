@@ -2,20 +2,15 @@ import React, { useEffect, useState } from "react";
 import Footer from "../useAgain/Footer/Footer";
 import Header from "../useAgain/Header/Header";
 import IndexCard from "./IndexCard/IndexCard";
+import blockScroll from "../../functions/blockScroll";
 
 export default function MainIndex(){
     const [blocked, setBlocked] = useState(false);
     useEffect(()=>{
-        if(blocked){
-            document.body.style.overflow = 'hidden';
-            document.body.style.height = '100vh';
-        } else {
-            document.body.style.overflow = 'visible';
-            document.body.style.height = 'auto';
-        }
+        blockScroll(blocked)
     },[blocked])
     return(
-        <main>
+        <main className="mainIndex">
             <div className="indexItems first">
                 <Header theme={'#559D53'} color={'#F7F5F5'} hoverTheme={'#448C42'} setBlocked={setBlocked}/>
                 <div className="image"><p>img</p></div>

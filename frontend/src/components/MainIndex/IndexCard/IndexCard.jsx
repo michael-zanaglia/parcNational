@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Observer from "../../functions/observer";
+import Observer from "../../../functions/observer";
 export default function IndexCard(){
 
     const cardsRef = useRef();
