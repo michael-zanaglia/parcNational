@@ -208,6 +208,7 @@ li {
         z-index: 1;
     }
 }
+
 /* ----------------------- FOOTER ----------------------- */
 
 footer {
@@ -244,4 +245,10 @@ footer {
         display: flex;
         flex-direction: column;
     } 
+}
+
+/* ----------------------- BODY ----------------------- */
+
+body {
+    background-color: #f7f5f5;
 }
