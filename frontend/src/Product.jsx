@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./styles/style.css"
-import "./styles/product.css"
 import Header from "./components/useAgain/Header/Header";
 import blockScroll from "./functions/blockScroll";
 import MainProduct from "./components/MainProduct/MainProduct";
