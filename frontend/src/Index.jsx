@@ -1,12 +1,9 @@
-import "./styles/header.css"
-import "./styles/footer.css"
-import "./styles/index.css"
-
+import MainIndex from "./components/MainIndex/MainIndex"
 
 export default function Index(){
     return(
         <>
-        
+           <MainIndex/>
         </>
     )
 }
