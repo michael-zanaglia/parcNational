@@ -1,0 +1,17 @@
+.ticketsBody {
+    height: 100vh;
+    width: 100vw;
+    background-color: #292929;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.ticketsMain{
+    background-color: #559D53;
+    overflow-y: scroll;
+    width: 50vw;
+    height: 70%;
+}
