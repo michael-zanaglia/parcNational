@@ -17,8 +17,8 @@ export default function MainProduct({ title }){
                         ))}
                     </div>
                     
-                </div>
-                <Footer/>  
+                </div> 
+                <Footer color={'#292929'} font={'#F7F5F5'}/>
             </main>
         </body>
             

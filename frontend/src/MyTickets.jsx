@@ -7,13 +7,15 @@ import blockScroll from "./functions/blockScroll";
 export default function MyTickets(){
     const [blocked, setBlocked] = useState(false);
     useEffect(()=>{
-        blockScroll(blocked)
+        blockScroll(blocked);
     },[blocked])
     return(
-        <div className="ticketsBody">
+        <div className="screenHeightTickets">
             <Header theme={'#D9D9D9'} color={'#292929'} hoverTheme={'#B38F9F'} setBlocked={setBlocked}/>
-            <MainTickets/>
-            <Footer/>
+            <div className="ticketsBody">
+                <MainTickets/>
+            </div>
+            <Footer color={'#D9D9D9'} font={'#292929'}/>
         </div>
     )
 }

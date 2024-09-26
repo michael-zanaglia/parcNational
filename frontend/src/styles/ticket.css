@@ -1,0 +1,84 @@
+.ticketPage {
+    width: 100vw;
+    height: 100vh;
+    background-color: #292929;
+    overflow-y: hidden;
+}
+
+.ticketSection {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.4s ease-in-out;
+}
+
+.cancelTicket{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+.cancelTicket h1{
+    font-size: 3rem;
+}
+.cancelTicket p{
+    font-size: 1.5rem;
+}
+.leftText{
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.4s ease-in-out;
+}
+.rightText{
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+
+}
+
+.cancelTicket h1,.cancelTicket p{
+    color: #f7f5f5;
+}
+.cancelTicket button{
+    background-color: #C9B0BF;
+    border: none;
+    width: 215px;
+    height: 55px;
+    border-radius: 5px;
+}
+.cancelTicket button:hover{
+    background-color: #aa95a1;
+    cursor: pointer;
+}
+.champTextTicket{
+    width: 70%;
+    transition: opacity 0.4s ease-in-out;
+    height: auto;
+}
+.qrBanner {
+    background-color: #559D53;
+    min-width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.cancelTicket, .qrBanner{
+    transition: all 0.4s ease-in-out;
+}
+.qrCode {
+    background-color: #292929;
+    width: 250px;
+    height: 250px;
+}
+.contentTicket{
+    width: 95%;
+    height: fit-content;
+}
+.boughtTicketTime{
+    align-self: end;
+}
