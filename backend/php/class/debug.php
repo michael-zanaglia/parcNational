@@ -1,5 +1,5 @@
 <?php
-echo"<b>DEBUG INCLUDED</b><br>";
+//echo"<b>DEBUG INCLUDED</b><br>";
 function print_exec($command){
 	echo "<b>$command:</b>";
 	$res=shell_exec($command);
