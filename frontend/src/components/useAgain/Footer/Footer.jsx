@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Footer(){
+export default function Footer({ color, font }){
     const [isHovered, setIsHovered] = useState({
         facebook: false,
         instagram: false,
@@ -24,6 +24,10 @@ export default function Footer(){
     function mouseLeaveElement(id){
         setIsHovered((prev)=>({...prev, [id]:false}))
     }
+
+    document.documentElement.style.setProperty("--colorFooter", color);
+    document.documentElement.style.setProperty("--fontFooter", font);
+
     return(
         <footer>
             <div className="footerItems"><a href="#">Mentions légales</a></div>

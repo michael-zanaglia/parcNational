@@ -70,7 +70,7 @@ export default function MainDetail(){
                         </div>
                     </div>
                 </div>
-                <Footer/>
+                <Footer color={'#292929'} font={'#F7F5F5'}/>
             </div> 
         </main>
         

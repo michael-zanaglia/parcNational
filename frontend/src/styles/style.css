@@ -90,11 +90,13 @@ li {
     transform: translateY(0%);
     opacity: 1;
     visibility: visible;
+    z-index: 999;
 }
 .hide {
     visibility: hidden;
     transform: translateY(5%);
     opacity: 0;
+    z-index: -5;
 }
 .moduleConn .close {
     align-self: end;
@@ -212,7 +214,7 @@ li {
 /* ----------------------- FOOTER ----------------------- */
 
 footer {
-    background-color: #292929;
+    background-color: var(--colorFooter);
     height: 159px;
     width: 100%;
     display: flex;
@@ -221,7 +223,7 @@ footer {
 }
 
 .footerItems a{
-    color: #F7F5F5;
+    color: var(--fontFooter);
 }
 
 .footerItems {
@@ -233,7 +235,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #F7F5F5;
+    color: var(--fontFooter);
 }
 
 .footerItems div{
