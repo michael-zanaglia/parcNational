@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../useAgain/Footer/Footer";
+import FilterProduct from "./FilterProduct/FilterProduct";
 export default function MainProduct({ title }){
     const test = ['1','2','3','4','5','6','7','8','9','10'];
     return(
@@ -7,7 +8,7 @@ export default function MainProduct({ title }){
             <main className="mainProduct">
                 <div id="frame">
                     <h1>Les {title}</h1>
-                    <div>Filter</div>
+                    <FilterProduct/>
                     <div id="productCards">
                         {test.map((card)=>(
                             <div key={card} className="productCard">

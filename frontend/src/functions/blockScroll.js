@@ -4,6 +4,6 @@ export default function blockScroll(blocked){
         document.body.style.height = '100vh';
     } else {
         document.body.style.overflow = 'visible';
-        document.body.style.height = 'auto';
+        document.body.style.height = '100vh';
     }
 }

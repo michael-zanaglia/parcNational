@@ -37,7 +37,7 @@ export default function MainTickets(){
                 }
             </div>
             <div className={`popUpMyTickets ${ myPop ? "showPop" : "hidePop"}`}>
-                Votre billet à bien ete annuler.
+                <p>Votre billet à bien ete annuler.</p>
             </div>
         </div>
     )

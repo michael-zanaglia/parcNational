@@ -82,3 +82,26 @@
 .boughtTicketTime{
     align-self: end;
 }
+
+@media (max-width:932px){
+    .ticketSection{
+        flex-direction: column-reverse;
+        height: 100vh;
+        align-items: center;
+        overflow: scroll;
+    }
+    .qrBanner{
+        padding: 10px;
+        flex-direction: column;
+        width: 100vw;
+        min-height: 100vh;
+    }
+    .contentTicket{
+        width: auto;
+    }
+    .cancelTicket{
+        width: 100%;
+        justify-content: center;
+        min-height: 100vh;
+    }
+}
