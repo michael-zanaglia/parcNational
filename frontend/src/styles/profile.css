@@ -1,0 +1,265 @@
+.mainProfile {
+    height: 100vh;
+    width: 80vw;
+    background-color: #559D53;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #f7f5f5;
+    align-items: center;
+}
+
+.editProfile {
+    width: 60%;
+    height: 60%;
+    background-color: #292929;
+    position: relative;
+    margin-left: 10%;
+    border-radius: 0 15px 15px 15px;
+}
+
+.ongletsProfile {
+    position: absolute;
+    left: -30%;
+    top: 0;
+    height: 50%;
+    width: 30%;
+    background-color: #3a3a3a;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ongletsProfile div {
+    width: 100%;
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formProfile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+.formProfile .inp {
+    background-color: #292929;
+    height: 30px;
+    color: #F7F5F5;
+    outline: none;
+    border: 1px solid #f7f5f5;
+}
+.formProfile .inp:focus {
+    border-color:#69c866;
+}
+.formProfile button {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(-50%);
+    border: 1px solid #C9B0BF;
+    background-color: #C9B0BF;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.formProfile button:hover {
+    border: 1px solid #f7f5f5;
+}
+.champsProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 6px;
+}
+
+fieldset {
+    height: 70%;
+    width: 50%;
+    max-width: 30vw;
+    max-width: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.renderPhoto {
+    height: 200px ;
+    width: 200px;
+    background-color: rebeccapurple;
+    overflow: hidden;
+}
+.renderPhoto img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.fileInp {
+    text-overflow: ellipsis;
+}
+
+.genreInp{
+    width: 13vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.listeRadio {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+}
+
+.localStorageForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.logProfile{
+    width: 95%;
+    height: 95%;
+    overflow-y: scroll;
+    margin-top: 1%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.logProfile div {
+    border-bottom: 1px solid #f7f5f5;
+    height: 3rem;
+    width: 100%;
+}
+.pwdModal{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    width: 20vw;
+    height: 50vh;
+    background-color: #559D53;
+    border: 1px solid yellow;
+    transition: all 0.3s ease-in-out;
+}
+.pwdModal svg {
+    cursor: pointer;
+}
+.pwdModal form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pwdModal form button{
+    border: 1px solid #C9B0BF;
+    background-color: #C9B0BF;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pwdModal form button:hover{
+    border: 1px solid #F7F5F5;
+}
+.pwdModal form input{
+    height: 30px;
+    background-color: #292929;
+    border: none;
+    color: #f7f5f5;
+    width: 80%;
+}
+
+.overlayProfile {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0,0.5);
+    z-index: 1;
+}
+.ongletsProfile div p{
+    text-align: center;
+}
+
+input[type="file"]{
+    width: 100%;
+    text-overflow: ellipsis;
+   
+}
+@media (max-width:1049px){
+    .mainProfile{
+        height: 100vh;
+        width: 100%;
+    }
+    .editProfile{
+        width: 80%;
+        height: 50%;
+        border-radius: 15px 0 15px 15px;
+        margin-left: 0;
+    }
+   
+    .formProfile button {
+        position: static;
+        bottom: 0;
+        transform: translateY(0);
+    }
+    .ongletsProfile {
+        flex-direction: row;
+        top: -8%;
+        left: 51%;
+        width: auto;
+        height: auto;
+        position: static;
+    }
+}
+
+@media (max-width:857px){
+    .editProfile{
+        width: 90%;
+        border-radius: 0;
+    }
+    .pwdModal {
+        top: 25%;
+        left: 14%;
+        width: 70vw;
+        height: 38vh;
+    }
+}
+
+@media (max-width:797px){
+    .renderPhoto{
+        height: 120px;
+        width: 120px;
+    }
+    .mainProfile{
+        height: 100vh;
+    }
+    .editProfile{
+        height: 100%;
+        margin-top: 5%;
+        width: 100%;
+    }
+    .formProfile{
+        flex-direction: column;
+        gap: 15px;
+        height: auto;
+    }
+    .ongletsProfile {
+        top: -5%;
+        left: 51%;
+        border-radius: 0;
+       
+    }
+    .ongletsProfile div p{
+        width: 100%;
+        height: 38px;
+    }
+}

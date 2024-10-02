@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function ModalConn({ isClicked, stateChange, color }){
     const [pathD, setPathD] = useState("M14.765 6.076a.5.5 0 0 1 .159.689a9.519 9.519 0 0 1-1.554 1.898l1.201 1.201a.5.5 0 0 1-.707.707l-1.263-1.263a8.472 8.472 0 0 1-2.667 1.343l.449 1.677a.5.5 0 0 1-.966.258l-.458-1.709a8.666 8.666 0 0 1-2.918 0l-.458 1.71a.5.5 0 1 1-.966-.26l.45-1.676a8.473 8.473 0 0 1-2.668-1.343l-1.263 1.263a.5.5 0 0 1-.707-.707l1.2-1.201A9.521 9.521 0 0 1 .077 6.765a.5.5 0 1 1 .848-.53a8.425 8.425 0 0 0 1.77 2.034A7.462 7.462 0 0 0 7.5 9.999c2.808 0 5.156-1.493 6.576-3.764a.5.5 0 0 1 .689-.159");
     const [inpType, setInpType] = useState(false);
+    const moduleRef = useRef(null);
     
     function clickCloseElement(){
         stateChange();
@@ -17,8 +18,23 @@ export default function ModalConn({ isClicked, stateChange, color }){
             setInpType(true);
         }
     }
+
+    function absoluteClose(event){
+        if(moduleRef.current && !moduleRef.current.contains(event.target)){
+            stateChange();
+        }
+    }
+    useEffect(() => {
+        if(isClicked){
+            document.addEventListener("mousedown", absoluteClose);
+        }
+        return () => {
+            document.removeEventListener("mouseup", absoluteClose);
+        };
+    }, [isClicked]);
+
     return (
-        <div className={`moduleConn ${isClicked? "show" : "hide"}`}>
+        <div ref={moduleRef} className={`moduleConn ${isClicked? "show" : "hide"}`}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={color} className="widthSize32 close" onClick={clickCloseElement}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
