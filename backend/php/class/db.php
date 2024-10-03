@@ -1,10 +1,11 @@
 <?php
 class Database{
-	private $conn;
+	public $conn;
 	private $host;
 	private $dbname;
 	private $user;
 	private $passwd;
+	public $prepared;
 	function __construct(){
 		$this->host="mysql-db";
 		$this->dbname="mercantour";
@@ -31,5 +32,29 @@ class Database{
 		}else{
 			return array();
 		}
+	}
+	function prepare($request){
+		$this->prepared=$this->conn->prepare($request);
+	}
+	function execute($args=array()){
+		if($args==array()){
+			return $this->conn->execute();
+		}else{
+			$index=1;
+			foreach($args as&$arg){
+				$this->prepared->bindParam($index,$arg);
+				$index++;
+			}
+			return $this->prepared->execute();
+		}
+	}
+	function row_count(){
+		return $this->prepared->rowCount();
+	}
+	function fetch(){
+		return $this->prepared->fetch();
+	}
+	function fetch_all(){
+		return $this->prepared->fetchAll(PDO::FETCH_ASSOC);
 	}
 }
