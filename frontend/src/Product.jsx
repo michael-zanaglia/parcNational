@@ -12,6 +12,7 @@ export default function Product(){
     const [products, setProducts] = useState(["circuits", "refuges"]);
 
     const [allProd, setAllProd] = useState(null);
+    const [filterTool, setFilterTool] = useState(null);
 
     useEffect(()=>{
         if(!products.includes(mypage.params)){
@@ -26,8 +27,10 @@ export default function Product(){
                 return data;
             }
             const pData = await fetching("?page="+mypage.params+"&arg="); //Route pour tous les circuits ou refuges
-            console.log(pData)
+            let placeData = await fetching("?page=&arg=place"); //Route pour tous les placetypes
+            console.log(placeData);
             setAllProd(pData);
+            setFilterTool(placeData);
         }
     
         fetchData();
@@ -42,7 +45,7 @@ export default function Product(){
         <>  
             <Header theme={'#559D53'} color={'#F7F5F5'} hoverTheme={'#448C42'} setBlocked={setBlocked}/>
             {/*<p>mypage.params === "circuits"?"oui":"non"}</p>*/}
-            <MainProduct title={mypage.params} datas={allProd || []}/>
+            <MainProduct title={mypage.params} datas={allProd || []} filters={filterTool}/>
         </>
     )
 }
