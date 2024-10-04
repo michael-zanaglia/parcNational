@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function FilterProduct({ filters, changeDts }){
+export default function FilterProduct({ filters, changeDts, setSelectVal, setSearchVal }){
     const [selected, setSelected] = useState(3);
-    const [f, setF] = useState(null);
+    const select = useRef();
+    const searching = useRef();
+    
+    function selectFilter(){
+        setSelectVal(select.current.value);
+    }
+    function searchFilter(){
+        setSearchVal(searching.current.value);
+    }
 
     function changeState(clicked){
         setSelected(clicked);
     }
     
     useEffect(()=>{
-        console.log(selected + 1)
         changeDts(selected+1);
     },[selected])
 
@@ -25,14 +32,16 @@ export default function FilterProduct({ filters, changeDts }){
             <div className="formProduct">
                 <div style={{ display:'flex', gap:'10px', justifyContent:'center', alignItems:'center', marginLeft:'1%', width:'30%' }}>
                     <p>Filtrer par :</p>
-                    <select name="" id="">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
+                    <select ref={select} onChange={selectFilter} name="options">
+                        <option value="none">---</option>
+                        <option value="status">Lieux ouverts</option>
+                        <option value="asc">Prix croissant</option>
+                        <option value="desc">Prix décroissant</option>
+                        <option value="order">A-Z ↓</option>
                     </select>   
                 </div>
                  
-                <input type="text" placeholder="Recherche..." />
+                <input ref={searching} onChange={searchFilter} type="text" placeholder="Recherche..." name="research"/>
             </div>
         </div>
     )
