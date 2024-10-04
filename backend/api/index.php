@@ -77,5 +77,13 @@ if($page!=""){
 		echo"{}";
 	}
 }else{
-	echo"{}";
+	if(!ctype_space($arg)&&$arg!=""){
+		if($arg=="place"){
+			echo json_encode($conn->sel_all("placetype"));
+		}else{
+			echo"{}";
+		}
+	}else{
+		echo"{}";
+	}
 }
