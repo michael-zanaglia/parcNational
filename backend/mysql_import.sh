@@ -1,2 +1,4 @@
 #!/bin/bash
-docker exec -it mysql-db sh -c "mysql -u root -p mercantour < $1"
+docker cp $1 mysql-db:/tmp/to_import.sql&&
+docker exec -it mysql-db sh -c "mysql -u root -p mercantour < /tmp/to_import.sql"&&
+echo "BDD importée."
