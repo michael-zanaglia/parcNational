@@ -4,28 +4,52 @@ import FilterProduct from "./FilterProduct/FilterProduct";
 import { Link } from "react-router-dom";
 
 export default function MainProduct({ title, datas, filters }){
-    const [dDatas, setDatas] = useState(null);
-    const [fixedDatas, setFixedDatas] = useState(null)
-    const [chageDDatas, setChangeDDatas] = useState(null);
+    const [dDatas, setDatas] = useState(null); // Les valeurs de base qui represent la vue du front
+    const [fixedDatas, setFixedDatas] = useState(null) // Les valeurs de base qui ne changeront jamais
+    const [changeDDatas, setChangeDDatas] = useState(null); // Les valeurs de base en fonction des placetype
+    const [selectValue, setSelectValue] = useState(null); // Les valeurs de base en fonction du select 
+    const [searchValue, setSearchValue] = useState(null); // Les valeurs de base en fonction de la recherche
+
+    function applyFilter(){
+        // la liste filtrée dependra de mes données immuable. A chaque changement d'une des trois dep, la fonction s'activera et recommencera du debut
+        // mais toujours avec des données actuelles.
+        let newList = fixedDatas;
+
+        if(changeDDatas && changeDDatas !==4){
+            newList = newList.filter((el)=>el.id_placetype === changeDDatas); // Les onglets definiront ma liste
+        }
+
+        if(searchValue){
+            newList = newList.filter((el)=>el.nom.includes(searchValue)); // je compare mon input aux noms dans la liste defini par l'onglet selectionné
+        }
+
+        if(selectValue){ // Je defini une liste plus affinée.
+            if(selectValue === "status"){
+                newList = newList.filter((el)=>el.id_status === 1);
+            } 
+            else if(selectValue === "order"){
+                newList = newList.filter((el)=>el.nom).sort((a,b)=>a.nom>b.nom);
+            }else if(selectValue === "asc"){
+                newList = newList.sort((a,b)=>Number(a.price)>Number(b.price));
+            }else if(selectValue === "desc"){
+                newList = newList.sort((a,b)=>Number(a.price)<Number(b.price));
+            }
+        }
+
+        setDatas(newList);
+
+    }
+
     useEffect(()=>{
         setDatas(datas);
+        //setPrevF(datas);
         setFixedDatas(datas);
-        console.log(datas)
     },[datas])
 
     useEffect(()=>{
-        if(chageDDatas){
-            if(chageDDatas !== 4){
-                let newList = fixedDatas.filter((el)=>el.id_placetype === chageDDatas);
-                console.log("ne", newList)
-                setDatas(newList);
-            } else {
-                setDatas(fixedDatas);
-                console.log("j'envoie", fixedDatas)
-            }
-        }
-        
-    },[chageDDatas])
+        applyFilter();
+    },[changeDDatas, searchValue, selectValue])
+
     
 
     return(
@@ -33,7 +57,7 @@ export default function MainProduct({ title, datas, filters }){
             <main className="mainProduct">
                 <div id="frame">
                     <h1>Les {title}</h1>
-                    <FilterProduct filters={filters} changeDts={setChangeDDatas}/>
+                    <FilterProduct filters={filters} changeDts={setChangeDDatas} setSelectVal={setSelectValue} setSearchVal={setSearchValue}/>
                     <div id="productCards">
                         {dDatas ? (dDatas.map((data)=>(
                             <Link to={'/tourisme/'+ title + '/' + (title === "circuits" ? data.id_circuit : data.id_camping)} key={title === "circuits" ? data.id_circuit + 'circuits' : 'refuges' + data.id_camping} >
@@ -50,6 +74,8 @@ export default function MainProduct({ title, datas, filters }){
                 <Footer color={'#292929'} font={'#F7F5F5'}/>
             </main>
         </div>
-            
+
     )
 }
+
+// ROUTE POUR REFUGE/CIRCUIT ET POUR ID
