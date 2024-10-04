@@ -1,6 +1,7 @@
 <?php
 session_start();
-$_SESSION["uid"]=1;
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header('Content-Type:application/json');
 include("../php/class/db.php");
 include("../php/class/debug.php");
@@ -19,6 +20,8 @@ if($page!=""){
 			echo json_encode($conn->sel_from("*","index_photos","where id_index_photos = 1",true)["photo"]);
 		}else if($arg=="camping"){
 			echo json_encode(explode("\n",$conn->sel_from("photos","campings","order by id_camping desc limit 1",true)["photos"])[0]);
+		}else if($arg=="circuit"){
+			echo json_encode(explode("\n",$conn->sel_from("photos","circuits","order by id_circuit desc limit 1",true)["photos"])[0]);
 		}else{
 			echo"{}";
 		}
