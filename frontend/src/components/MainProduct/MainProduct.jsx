@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../useAgain/Footer/Footer";
 import FilterProduct from "./FilterProduct/FilterProduct";
-export default function MainProduct({ title }){
-    const test = ['1','2','3','4','5','6','7','8','9','10'];
+import { Link } from "react-router-dom";
+
+export default function MainProduct({ title, datas }){
+    const [dDatas, setDatas] = useState(null);
+
+    useEffect(()=>{
+        setDatas(datas);
+    },[datas])
+    
+
     return(
         <body className="bodyProduct">
             <main className="mainProduct">
@@ -10,12 +18,15 @@ export default function MainProduct({ title }){
                     <h1>Les {title}</h1>
                     <FilterProduct/>
                     <div id="productCards">
-                        {test.map((card)=>(
-                            <div key={card} className="productCard">
-                                <div className="productCardImg">Img</div>
-                                <p>{card}</p>
-                            </div>    
-                        ))}
+                        {dDatas ? (dDatas.map((data)=>(
+                            <Link to={'/tourisme/'+ title + '/' + (title === "circuits" ? data.id_circuit : data.id_camping)}>
+                                <div key={title === "circuits" ? data.id_circuit : data.id_camping} className="productCard">
+                                    <div className="productCardImg"><img src={data.photos.split('\n')[0]} alt="photo-card" /></div>
+                                    <p>{data.nom}</p>
+                                </div>
+                            </Link> 
+                            )   
+                        )) : (<p>error</p>) }
                     </div>
                     
                 </div> 
