@@ -1,37 +1,24 @@
 import React, { useEffect, useState } from "react";
 
-export default function FilterProduct(){
-    const testfilter = ['1','2','3', '4'];
-    const [selected, setSelected] = useState(0);
-    const [filterTool, setFilterTool] = useState(null);
+export default function FilterProduct({ filters, changeDts }){
+    const [selected, setSelected] = useState(3);
+    const [f, setF] = useState(null);
 
     function changeState(clicked){
         setSelected(clicked);
     }
-
-    useEffect(()=>{
-        async function fetchData() {
-            async function fetching(route) {
-                const response = await fetch("http://localhost:8080/api/"+route);
-                if(!response.ok){ console.warn("ERREUR DANS LE FETCH");}
-                const data = await response.json();
-                return data;
-            }
-            const placeData = await fetching("?page=&arg=place"); //Route pour tous les placetypes
-            placeData.push("Tous");
-            console.log(placeData);
-            setFilterTool(placeData);
-        }
     
-        fetchData();
-    },[])
+    useEffect(()=>{
+        console.log(selected + 1)
+        changeDts(selected+1);
+    },[selected])
 
     return(
         <div className="filterProduct">
             <div className="ongletsProduct">
-                {testfilter.map((filter, index) =>(
-                    <div onClick={()=>changeState(index)} key={filter+'**'} style={{borderRadius : index === 0 ? '10px 0 0 0' : index === testfilter.length -1 ? '0 10px 0 0':'0', backgroundColor : selected === index ? '#559D53' : ''}}>
-                        {'type'+filter}
+                {filters && filters.map((filter, index) =>(
+                    <div onClick={()=>changeState(index)} key={filter.placetype || 'all'} style={{borderRadius : index === 0 ? '10px 0 0 0' : index === filters.length -1 ? '0 10px 0 0':'0', backgroundColor : selected === index ? '#559D53' : ''}}>
+                        {filter.placetype || filter}
                     </div>
                 ))}
             </div>
