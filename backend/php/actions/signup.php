@@ -2,7 +2,7 @@
 session_start();
 include("../class/db.php");
 if(!isset($_POST)){
-	header("Location:/signup.php");
+	echo "NOPOST";exit();								// Pas de $_POST
 }
 
 $username=	$_POST["username"];
@@ -24,17 +24,17 @@ $conn->execute([$_POST["email"]]);
 $email_used=$conn->row_count();
 
 /* VERIFICATIONS */
-if($username_used>0){header("Location:/signup.php?err=un_at");exit();}			// username deja pris
-if(strlen($username)<3){header("Location:/signup.php?err=un_nle");exit();}		// username pas assez long
-if($email_used>0){header("Location:/signup.php?err=email");exit();}			// email deja pris
-if(strlen($password1)<8){header("Location:/signup.php?err=psswd_nle");exit();}		// Mot de passe trop court
-if($password1!=$password2){header("Location:/signup.php?err=ncp_psswd");exit();}	// Mots de passes pas correspondants
+if($username_used>0){echo "PSEUDODP";exit();}						// username deja pris
+if(strlen($username)<3){echo "PSEUDOPAL";exit();}					// username pas assez long
+if($email_used>0){echo "EMAILDP";exit();}						// email deja pris
+if(strlen($password1)<8){echo "MDPPAL";exit();}						// Mot de passe trop court
+if($password1!=$password2){echo"MDPPC";exit();}						// Mots de passes pas correspondants
 
 $conn->prepare("insert into users (username,password,firstname,lastname,email,birthdate,gender,role) values (?,?,?,?,?,?,?,?)");
 if($conn->execute([$username,password_hash($password1,PASSWORD_DEFAULT),$fname,$lname,$email,$bdate,$gender,"user"])){
-	header("Location:/index.php");
+	echo"OK";		// Utilisateur inscrit
 	exit();
 }else{
-	header("Location:/signup.php&err=");
+	echo"PASOK";		// Erreur interne
 	exit();
 }
