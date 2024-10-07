@@ -73,6 +73,8 @@ if($page!=""){
 		}else{
 			echo json_encode($conn->sel_from("*","informations"," where id_information = ".$info_id,true));
 		}
+	}else if($page=="session"){
+		echo json_encode($_SESSION);
 	}else{
 		echo"{}";
 	}
