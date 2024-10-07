@@ -8,9 +8,29 @@ export default function ModalConn({ isClicked, stateChange, color }){
 
     function logIn(e){
         e.preventDefault();
-        console.log(form.current)
+        console.log(form.current);
         const formData = new FormData(form.current);
         console.log(formData);
+
+        const options = {
+            method : "POST",
+            body : formData
+        }
+
+        const checkConnexion = async ()=>{
+            try {
+                const response = await fetch("http://localhost:8080/php/actions/login.php", options);
+                if(!response.ok){console.warn("Erreur de fetch pour la connexion");}
+                const data = await response.json();
+                return data; 
+            } catch (error) {
+                console.warn("CONNEXION", error)
+                return false;
+            }
+            
+        }
+
+        checkConnexion();
     }
     
     function clickCloseElement(){
