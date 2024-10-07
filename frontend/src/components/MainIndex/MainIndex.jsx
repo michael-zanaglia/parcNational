@@ -6,47 +6,21 @@ import blockScroll from "../../functions/blockScroll";
 
 export default function MainIndex(){
     const [blocked, setBlocked] = useState(false);
-    const [indexPhoto, setIndexPhoto] = useState(null);
-    const [myCards, setCards] = useState([]);
-    const cards = ["Circuits", "Refuges", "Informations"];
-    
     useEffect(()=>{
         blockScroll(blocked)
     },[blocked])
-
-    useEffect(()=>{
-
-        async function fetchData() {
-            async function fetching(route) {
-                const response = await fetch("http://localhost:8080/api/"+route);
-                if(!response.ok){ console.warn("ERREUR DANS LE FETCH");}
-                const data = await response.json();
-                console.log("prod : ", data)
-                return data;
-            }
-            const iPData = await fetching("?page=index&arg=wallpaper"); //Route pour la photo d'acceuil
-            const cCData = await fetching("?page=index&arg=camping"); // Route pour card Camping
-            const cCiData = await fetching("?page=index&arg=circuit"); // Route pour card Circuit
-            const cIData = await fetching("?page=index&arg=info"); // Route pour card Informations
-            setIndexPhoto(iPData); 
-            setCards([cCData, cCiData, cIData]);    
-        }
-
-        fetchData();
-
-    },[])
     return(
         <main className="mainIndex">
             <div className="indexItems first">
                 <Header theme={'#559D53'} color={'#F7F5F5'} hoverTheme={'#448C42'} setBlocked={setBlocked}/>
-                <div className="image"><img src={indexPhoto} alt="wallpaper" /></div>
+                <div className="image"><p>img</p></div>
             </div>
 
             <div className="indexItems two">
                 <h1>Découvrir le Parc du Mercantour</h1>  
                 <div className="cards">
-                    {cards.map((card,index)=>(
-                        <IndexCard key={card + index} card={myCards[index]} titre={cards[index]} />
+                    {Array.from({ length: 3 }, (_, i) => (
+                        <IndexCard key={i} />
                     ))}
                 </div>   
             </div>
