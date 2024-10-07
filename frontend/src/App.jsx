@@ -34,7 +34,6 @@ function App() {
         <Route path='/vosbillets' element={<MyTickets/>}/>
         <Route path='/vosbillets/:id' element={<Ticket/>}/>
         <Route path='/:params/:id' element={<Article/>}/>
-        <Route path='/signup' element={<Signup/>}/>
         <Route path='/informations' element={<Informations/>}/>
 
         <Route path='/*' element={<ErrorPage/>}/>
