@@ -1,14 +1,17 @@
 <?php
+header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 session_start();
 include("../class/db.php");
 include("../class/users.php");
 $conn=new Database;
 if(isset($_SESSION["uid"])){
-	return False;					// Déja log
+	return false;					// Déja log
 	exit();
 }
 if(!isset($_POST)){
-	return False;					// Pas de $_POST
+	return false;					// Pas de $_POST
 	exit();
 }
 $username=$_POST["username"];
@@ -19,18 +22,19 @@ if($uexists){
 	$id=		$UM->get_id_by_un($username);
 	$r_username=	$UM->get_un_by_id($id);
 	$r_password=	$UM->get_password($id);
+	$role=		$UM->get_role($id);
 	if(password_verify($password,$r_password)){
 		$_SESSION=[];
 		$_SESSION["username"]=	$r_username;
 		$_SESSION["uid"]=	$id;
-		header("Location:/");
-		return True;				// Yeah!
+		$_SESSION["role"]=	$role;
+		return true;				// Yeah!
 		exit();
 	}else{
-		return False;				// Mauvais mot de passe
+		return false;				// Mauvais mot de passe
 		exit();
 	}
 }else{
-	return False;					// Utilisateur inexistant
+	return false;					// Utilisateur inexistant
 	exit();
 }
