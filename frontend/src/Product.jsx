@@ -28,7 +28,6 @@ export default function Product(){
             }
             const pData = await fetching("?page="+mypage.params+"&arg="); //Route pour tous les circuits ou refuges
             let placeData = await fetching("?page=&arg=place"); //Route pour tous les placetypes
-            console.log(placeData);
             setAllProd(pData);
             setFilterTool(placeData);
         }

@@ -42,6 +42,7 @@ export default function MainProduct({ title, datas, filters }){
 
     useEffect(()=>{
         setDatas(datas);
+        console.log("PLACEDATA", datas)
         //setPrevF(datas);
         setFixedDatas(datas);
     },[datas])
@@ -59,14 +60,17 @@ export default function MainProduct({ title, datas, filters }){
                     <h1>Les {title}</h1>
                     <FilterProduct filters={filters} changeDts={setChangeDDatas} setSelectVal={setSelectValue} setSearchVal={setSearchValue}/>
                     <div id="productCards">
-                        {dDatas ? (dDatas.map((data)=>(
-                            <Link to={'/tourisme/'+ title + '/' + (title === "circuits" ? data.id_circuit : data.id_camping)} key={title === "circuits" ? data.id_circuit + 'circuits' : 'refuges' + data.id_camping} >
+                        {dDatas ? (dDatas.map((data, index)=>{
+                            const uniqueKey = title === "circuits" ? (data.id_circuit ? `${data.id_circuit}-circuits` : `index-${index}`) 
+                                                                    : (data.id_camping ? `${data.id_camping}-refuges` : `index-${index}`);
+
+                            return (<Link to={'/tourisme/'+ title + '/' + (title === "circuits" ? data.id_circuit : data.id_camping)} key={uniqueKey} >
                                 <div className="productCard">
                                     <div className="productCardImg"><img src={data.photos.split('\n')[0]} alt="photo-card" /></div>
                                     <p>{data.nom}</p>
                                 </div>
-                            </Link> 
-                            )   
+                            </Link> )
+                        }   
                         )) : (<p>error</p>) }
                     </div>
                     
