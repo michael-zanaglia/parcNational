@@ -1,0 +1,145 @@
+.bodyProduct {
+    display: flex;
+    justify-content: center;
+}
+
+.mainProduct {
+    height: auto;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#frame{
+    background-color: #d9d9d9;
+    min-height: 100vh;
+    width: 100%;
+    padding: 5%;
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;  
+}
+
+#productCards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    align-items: center;
+
+}
+
+.productCard{
+    background-color: #F7F5F5;
+    border-radius: 0px 18px 0px 0px;
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 6px 4px rgba(0, 0, 0, 0);
+    transition: all 0.3s ease-in-out;
+}
+
+.productCard:hover{
+    cursor: pointer;
+    background-color: #B38F9F;
+    transform: translateY(-15px);
+    box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
+.productCardImg{
+    margin-top: 5px;
+    overflow: hidden;
+    border-radius: 0px 18px 0px 0px;
+    background-color: #292929;
+    width: 190px;
+    height: 190px;
+}
+
+.filterProduct{
+    background-color: #448C42;
+    width: 100%;
+    position: relative;
+    height: 50px;
+    border-radius: 0 10px 10px;
+    box-shadow: 5px 5px 5px rgba(41, 41, 41, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #f7f5f5;
+    flex-wrap: wrap;
+}
+.filterProduct input{
+    background-color: #292929;
+    color: #F7F5F5;
+    outline: none;
+    border: none;
+    margin-right: 3%;
+    height: 30px;
+    width: 50%;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+.formProduct{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.formProduct div select{
+    background-color: #559D53;
+    border: none;
+    cursor: pointer;
+    color: #f7f5f5;
+    width: 30%;
+}
+
+.ongletsProduct {
+    position: absolute;
+    display: flex;
+    min-width: 35%;
+    height: auto;
+    background-color: #448C42;
+    justify-content: space-between;
+    top: -58%;
+    left: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.ongletsProduct div{
+    width: 100%;
+    height: 100%;  
+    padding: 5px;  
+    text-align: center;
+    
+}
+
+.ongletsProduct div:hover{
+    background-color: #559D53;
+    cursor: pointer;
+} 
+@media (max-width:480px){
+    .ongletsProduct{
+        top: -28%;
+    }
+    .filterProduct{
+        height: 100px;
+    }
+    .formProduct{
+        flex-direction: column-reverse;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .formProduct input{
+        width: 95%;
+        margin: 0;
+    }
+    .formProduct div select{
+        width: 35px;
+    }
+}
