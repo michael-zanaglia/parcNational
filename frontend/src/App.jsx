@@ -7,6 +7,7 @@ import MyTickets from "./MyTickets"
 import Detail from "./Detail"
 import Ticket from "./Ticket"
 import Article from "./Article"
+import Signup from "./Signup"
 import "./styles/style.css"
 import "./styles/index.css"
 import "./styles/product.css"
@@ -28,6 +29,7 @@ function App() {
         <Route path='/vosbillets' element={<MyTickets/>}/>
         <Route path='/vosbillets/:id' element={<Ticket/>}/>
         <Route path='/:params/:id' element={<Article/>}/>
+        <Route path='/signup' element={<Signup/>}/>
 
         <Route path='/*' element={<ErrorPage/>}/>
         
