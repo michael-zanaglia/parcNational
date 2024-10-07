@@ -16,6 +16,8 @@ import "./styles/myTickets.css"
 import "./styles/ticket.css"
 import "./styles/article.css"
 import "./styles/profile.css"
+import "./styles/informations.css"
+import Informations from "./Informations"
 
 function App() {
 
@@ -31,6 +33,7 @@ function App() {
         <Route path='/vosbillets' element={<MyTickets/>}/>
         <Route path='/vosbillets/:id' element={<Ticket/>}/>
         <Route path='/:params/:id' element={<Article/>}/>
+        <Route path='/informations' element={<Informations/>}/>
 
         <Route path='/*' element={<ErrorPage/>}/>
         
