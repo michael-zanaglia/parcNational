@@ -36,4 +36,10 @@ class User{
 		$sql=$conn->execute([$uid]);
 		return $conn->fetch()[0];
 	}
+	function get_role($uid){
+		global $conn;
+		$sql=$conn->prepare("select role from users where id_user = ?");
+		$sql=$conn->execute([$uid]);
+		return $conn->fetch()[0];
+	}
 }
