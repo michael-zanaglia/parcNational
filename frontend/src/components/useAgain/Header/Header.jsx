@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import ModalConn from "./modalConn/modalConn";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ export default function Header({ theme, color, hoverTheme, setBlocked }){
     const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const [isClickedMob, setIsClickedMob] = useState(false);
+    const [isConnected, setConnected] = useState(false);
     
     function mouseOverElement(){
         setIsHovered(!isHovered);
@@ -23,6 +24,21 @@ export default function Header({ theme, color, hoverTheme, setBlocked }){
         setIsClickedMob(!isClickedMob);
         setBlocked(!isClickedMob);
     }
+
+    useEffect(()=>{
+        async function fetchData() {
+            async function fetching(route) {
+                const response = await fetch("http://localhost:8080/api/"+route);
+                if(!response.ok){ console.warn("ERREUR DANS LE FETCH");}
+                const data = await response.json();
+                return data;
+            }
+            const isConn = await fetching("?page=session"); //Route pour vois si je suis connecté
+            setConnected(isConn && isConn.length > 0);
+        }
+    
+        fetchData();
+    },[isConnected])
 
     document.documentElement.style.setProperty("--mainTheme", theme);
     document.documentElement.style.setProperty("--colorTheme", color);
@@ -64,7 +80,7 @@ export default function Header({ theme, color, hoverTheme, setBlocked }){
                         <div className="liBox">
                             <a href="#" onClick={clickOpenElement}>
                                 <li>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={color} className="widthSize32 user">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={isConnected ? "#2C75FF" : color} className="widthSize32 user">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
                                 </li> 
