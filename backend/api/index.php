@@ -1,8 +1,9 @@
 <?php
 session_start();
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header('Content-Type:application/json');
+header("Access-Control-Allow-Credentials: true");
 include("../php/class/db.php");
 include("../php/class/debug.php");
 $conn=new Database;
@@ -74,7 +75,7 @@ if($page!=""){
 			echo json_encode($conn->sel_from("*","informations"," where id_information = ".$info_id,true));
 		}
 	}else if($page=="session"){
-		echo json_encode($_SESSION);
+		echo json_encode(["session" => $_SESSION]);
 	}else{
 		echo"{}";
 	}

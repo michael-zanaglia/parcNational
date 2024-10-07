@@ -7,7 +7,7 @@ include("../class/db.php");
 include("../class/users.php");
 $conn=new Database;
 if(isset($_SESSION["uid"])){
-	json_encode(['success' => False]) ;					// Déja log
+	echo json_encode(['success' => False]) ;					// Déja log
 	exit();
 }
 if(!isset($_POST)){
@@ -24,8 +24,8 @@ if($uexists){
 	$r_password= $UM->get_password($id);
 	if(password_verify($password,$r_password)){
 		$_SESSION=[];
-		$_SESSION["username"]=	$r_username;
-		$_SESSION["uid"]=	$id;
+		$_SESSION["username"]=$r_username;
+		$_SESSION["uid"]=$id;
 		
 		echo json_encode(['success' => True]) ;				// Yeah!
 		exit();

@@ -147,6 +147,22 @@ li {
     background-color: #1382EA;
     cursor: pointer;
 }
+.deco {
+    background-color: #F11566;
+    cursor: pointer;
+    width: 100%;
+    padding: 5%;
+}
+.userBar{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.userBar .profile{
+    height: 50px;
+    background-color: #1382EA;
+    width: 258px;
+}
 .conn:hover {
     background-color: #1176d4;
 }

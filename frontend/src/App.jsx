@@ -9,6 +9,7 @@ import Ticket from "./Ticket"
 import Article from "./Article"
 import Profile from "./Profile"
 import Signup from "./Signup"
+import Informations from "./Informations"
 import "./styles/style.css"
 import "./styles/index.css"
 import "./styles/product.css"
@@ -17,6 +18,7 @@ import "./styles/myTickets.css"
 import "./styles/ticket.css"
 import "./styles/article.css"
 import "./styles/profile.css"
+import "./styles/informations.css"
 
 function App() {
 
@@ -33,6 +35,7 @@ function App() {
         <Route path='/vosbillets/:id' element={<Ticket/>}/>
         <Route path='/:params/:id' element={<Article/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/informations' element={<Informations/>}/>
 
         <Route path='/*' element={<ErrorPage/>}/>
         

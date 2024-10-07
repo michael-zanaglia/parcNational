@@ -25,20 +25,22 @@ export default function Header({ theme, color, hoverTheme, setBlocked }){
         setBlocked(!isClickedMob);
     }
 
-    useEffect(()=>{
-        async function fetchData() {
-            async function fetching(route) {
-                const response = await fetch("http://localhost:8080/api/"+route);
-                if(!response.ok){ console.warn("ERREUR DANS LE FETCH");}
-                const data = await response.json();
-                return data;
-            }
-            const isConn = await fetching("?page=session"); //Route pour vois si je suis connecté
-            setConnected(isConn && isConn.length > 0);
+
+    async function fetchData() {
+        async function fetching(route) {
+            const response = await fetch("http://localhost:8080/api/"+route,{credentials:'include'});
+            if(!response.ok){ console.warn("ERREUR DANS LE FETCH");}
+            const data = await response.json();
+            return data;
         }
-    
+        const isConn = await fetching("?page=session"); //Route pour vois si je suis connecté
+        console.log(isConn.session)
+        setConnected(isConn.session && Object.keys(isConn).length > 0);
+    }
+
+    useEffect(()=>{
         fetchData();
-    },[isConnected])
+    },[])
 
     document.documentElement.style.setProperty("--mainTheme", theme);
     document.documentElement.style.setProperty("--colorTheme", color);
@@ -85,7 +87,7 @@ export default function Header({ theme, color, hoverTheme, setBlocked }){
                                     </svg>
                                 </li> 
                             </a>
-                            <ModalConn isClicked={isClicked} stateChange={modalStateChange} color={color}/>
+                            <ModalConn isClicked={isClicked} stateChange={modalStateChange} color={color} func={fetchData} conn={isConnected} setConn={setConnected}/>
                         </div>
                                 
                     </div>}  
@@ -109,7 +111,7 @@ export default function Header({ theme, color, hoverTheme, setBlocked }){
                     <div className="liBox"><Link to='/vosbillets'><li>Vos billets</li></Link></div>
                     <div className="liBox">
                         <a onClick={clickOpenElement}><li>Connexion</li></a>
-                        <ModalConn isClicked={isClicked} stateChange={modalStateChange} color={color} />
+                        <ModalConn isClicked={isClicked} stateChange={modalStateChange} color={color} func={fetchData} conn={isConnected} setConn={setConnected} />
                     </div>
                 </div>}
             </nav>
