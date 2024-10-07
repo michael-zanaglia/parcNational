@@ -15,6 +15,9 @@ import "./styles/detail.css"
 import "./styles/myTickets.css"
 import "./styles/ticket.css"
 import "./styles/article.css"
+import "./styles/profile.css"
+import "./styles/informations.css"
+import Informations from "./Informations"
 
 function App() {
 

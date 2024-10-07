@@ -26,14 +26,15 @@ export default function Header({ theme, color, hoverTheme, setBlocked }){
     }
 
     useEffect(()=>{
+        console.log("tedt")
         async function fetchData() {
             async function fetching(route) {
                 const response = await fetch("http://localhost:8080/api/"+route);
                 if(!response.ok){ console.warn("ERREUR DANS LE FETCH");}
-                const data = await response.json();
                 return data;
             }
             const isConn = await fetching("?page=session"); //Route pour vois si je suis connecté
+            console.log(isConn)
             setConnected(isConn && isConn.length > 0);
         }
     
